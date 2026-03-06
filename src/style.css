@@ -1,0 +1,269 @@
+ul,
+ol,
+p {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+image {
+  display: block;
+}
+
+h1,
+h2 {
+  text-align: center;
+  padding-block: 20px;
+}
+
+body {
+  line-height: 1.5;
+  text-indent: 20px;
+}
+
+button {
+  cursor: pointer;
+}
+
+section {
+  padding-block: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.container {
+  max-width: 1280px;
+  padding-right: 32px;
+  padding-left: 32px;
+  margin: 0 auto;
+}
+
+.logo-wrap {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.4s ease;
+  transform: scale(1);
+
+  &:hover {
+    transform: scale(1.1);
+    transition: all 0.4s ease;
+  }
+}
+
+.logo-wrap img {
+  width: 56px;
+  height: 56px;
+}
+
+.logo-text {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 140px;
+  font-size: 36px;
+  font-weight: 800;
+  text-align: center;
+  text-indent: 0;
+  line-height: 1.1;
+}
+
+.logo-text span {
+  transition: all 0.4s ease;
+}
+
+.logo-text p {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.langSwitch {
+  display: flex;
+  gap: 10px;
+}
+
+.langSwitch button {
+  border: none;
+  background-color: transparent;
+}
+
+.menu.is-open {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: beige;
+  z-index: 10;
+}
+
+.menu button {
+  border: none;
+  width: 80px;
+  padding-block: 12px;
+  background-color: transparent;
+  border-radius: 10px;
+
+  &:hover {
+    background-color: wheat;
+  }
+}
+
+.menu button.open {
+  position: absolute;
+  top: 20px;
+  right: 140px;
+}
+
+.nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  padding: 200px 100px;
+  row-gap: 30px;
+}
+
+.accordeon {
+  display: grid;
+  flex-direction: column;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 30px;
+  margin-top: 50px;
+}
+
+.accordeon-item {
+  position: relative;
+  padding-inline: 0;
+  text-indent: 0;
+
+  &:hover {
+    background: radial-gradient(
+      60% 20% at 50% 100%,
+      rgba(255, 68, 0, 0.603) 0%,
+      rgba(245, 222, 179, 0.021) 100%
+    );
+  }
+}
+
+.accordeon-item p {
+  padding: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 68, 0, 0.541);
+  text-indent: 20px;
+}
+
+.btnAccordeon {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: none;
+  text-align: left;
+  padding: 20px;
+  text-indent: 20px;
+  width: 100%;
+  background-color: transparent;
+  border-bottom: 1px solid rgba(255, 68, 0, 0.548);
+  transform: scale(1);
+  transition: 0.3s font-size ease, 0.3s color ease;
+
+  &:hover {
+    color: rgba(110, 34, 6, 0.89);
+    font-size: 16px;
+    transition: 0.3s font-size ease, 0.3s color ease;
+  }
+}
+
+.accordeon-item .accIcon {
+  padding: 0;
+  font-size: 20px;
+  border: none;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  justify-items: center;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.gallery li {
+  width: 600px;
+}
+
+.img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  height: 400px;
+}
+
+.img-slaider {
+  width: 100%;
+  height: auto;
+  max-height: 100vh;
+  object-fit: cover;
+}
+
+.containerSlaider {
+  position: relative;
+}
+
+.btnNext,
+.btnPrev {
+  position: absolute;
+  top: 50%;
+  z-index: 3;
+  width: 60px;
+  height: 60px;
+  padding-bottom: 20px;
+  border-radius: 50%;
+  font-size: 40px;
+  font-weight: 800;
+  color: orangered;
+  background-color: rgba(245, 245, 220, 0.582);
+  border: none;
+
+  &:hover {
+    background-color: whitesmoke;
+  }
+}
+
+.btnNext {
+  right: -16px;
+}
+
+input {
+  display: block;
+  outline: none;
+  width: 230px;
+  border-radius: 5px;
+  margin-inline: auto;
+  height: 26px;
+}
+
+.btnUp {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 20px;
+  right: 10px;
+  z-index: 10;
+  background-color: transparent;
+  font-size: 30px;
+  color: orangered;
+  border: 1px solid orangered;
+  transform: rotate(90deg);
+  padding-bottom: 5px;
+
+  &:hover {
+    background-color: whitesmoke;
+  }
+}

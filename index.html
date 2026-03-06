@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./src/style.css" />
+  </head>
+  <body x-data="localization()">
+    <header>
+      <div class="container header">
+        <div class="logo-wrap">
+          <img src="/images/logo.webp" aria-label="logo ДАКК" />
+          <div class="logo-text">
+            <div class="anim-text" x-data="animatedLogo()">
+              <template x-for="(item, index) in letters" :key="index">
+                <span
+                  x-text="item"
+                  :style="{
+                    color: glow ? getColor(index) : reversColor(index),
+                    textShadow: glow ? `0 0 2px ${reversColor(index)}` : 'none'
+                  }"
+                  :class="{'active': index === current}"
+                  @mouseenter="glow= true"
+                  @mouseleave="glow=false"
+                ></span>
+              </template>
+              <p>Дніпровська архітектурна конструкторська компанія</p>
+            </div>
+          </div>
+        </div>
+        <div
+          x-data="{data: new Date().toLocaleTimeString([], {hour12: false})}"
+          x-init="setInterval(() => data = new Date().toLocaleTimeString([], {hour12: false}), 1000)"
+          class="container"
+        >
+          <p x-text="data"></p>
+        </div>
+        <div class="langSwitch">
+          <button @click="setLocale('ua')">UA</button>
+          <button @click="setLocale('en')">EN</button>
+        </div>
+        <div x-data="{open: false}" class="menu" :class="{'is-open': open}">
+          <button
+            @click="open = ! open"
+            x-text="open===true ? t(base.close):t(base.menu)"
+            :class="{'open': open===true}"
+          ></button>
+          <nav x-show="open">
+            <ul class="nav">
+              <template x-for="(item, index) in menu" :key="index">
+                <li class="navItem">
+                  <a :href="item.url" x-text="t(item.label)"></a>
+                </li>
+              </template>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <section>
+      <div class="container">
+        <h1 x-text="t(base.title)"></h1>
+        <p x-text="t(base.poster)"></p>
+        <h2 x-text="t(base.infoTitle)"></h2>
+        <p x-text="t(base.infoText)"></p>
+        <ul class="accordeon" x-data="{active: null}">
+          <template x-for="(item, index) in accordeon" :key="index">
+            <li class="accordeon-item">
+              <button
+                class="btnAccordeon"
+                @click="active =( active===index? null : index)"
+              >
+                <span x-text="t(item.button)"> </span>
+                <span
+                  x-text="(active===index? '-' : '+' )"
+                  class="accIcon"
+                ></span>
+              </button>
+              <p
+                x-show="active===index"
+                x-text="t(item.text)"
+                x-transition.duration.300ms
+              ></p>
+            </li>
+          </template>
+        </ul>
+      </div>
+    </section>
+
+    <section
+      x-data="{search: '', get filtered() {
+      return this.images.filter(i=> i.includes(this.search))
+    }}"
+    >
+      <div class="container">
+        <h2 x-text="t(base.gallery)"></h2>
+        <input
+          x-model="search"
+          class="search"
+          placeholder="Введіть цифри від 1 до 9 для пошуку відповідної картинки"
+          title="Введіть цифри від 1 до 9 для пошуку відповідної картинки"
+        />
+        <ul class="gallery">
+          <template x-for="(item, index) in filtered" :key="index">
+            <li>
+              <img :src="item" class="img" />
+            </li>
+          </template>
+        </ul>
+      </div>
+    </section>
+
+    <section x-data="{current: 0}">
+      <div class="container">
+        <h2 x-text="t(base.slaider)"></h2>
+        <div class="containerSlaider">
+          <button
+            @click="current = (current-1 +images.length) % images.length"
+            class="btnPrev"
+          >
+            ❮
+          </button>
+          <img :src="images[current]" class="img-slaider" />
+          <button @click="current=(current+1) % images.length " class="btnNext">
+            ❯
+          </button>
+        </div>
+      </div>
+    </section>
+    <button
+      x-data="{show: false}"
+      x-init="window.addEventListener('scroll', ()=> show=window.scrollY>400)"
+      x-show="show"
+      x-transition
+      @click="window.scrollTo({top:0, behavior: 'smooth'})"
+      class="btnUp"
+    >
+      ❮
+    </button>
+  </body>
+  <script type="module" src="/src/main.js"></script>
+  <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+</html>
