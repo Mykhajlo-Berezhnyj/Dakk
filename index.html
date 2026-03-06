@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -12,21 +12,18 @@
         <a href="/" class="logo-wrap">
           <img src="/images/logo.webp" aria-label="logo ДАКК" />
           <div class="logo-text">
-            <div class="anim-text" x-data="animatedLogo()">
+            <div class="anim-text" x-data="animatedText('ДАКК')">
               <template x-for="(item, index) in letters" :key="index">
                 <span
                   x-text="item"
-                  :style="{
-                    color: glow ? getColor(index) : reversColor(index),
-                    textShadow: glow ? `0 0 2px ${reversColor(index)}` : 'none'
-                  }"
+                  :style="{color: getColor(index)}"
                   :class="{'active': index === current}"
                   @mouseenter="glow= true"
                   @mouseleave="glow=false"
                 ></span>
               </template>
-              <p>Дніпровська архітектурна конструкторська компанія</p>
             </div>
+            <p>Дніпровська архітектурна конструкторська компанія</p>
           </div>
         </a>
         <div
