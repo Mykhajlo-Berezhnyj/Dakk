@@ -6,6 +6,10 @@ p {
   list-style: none;
 }
 
+a {
+  text-decoration: none;
+}
+
 image {
   display: block;
 }
@@ -80,6 +84,7 @@ section {
 .logo-text p {
   font-size: 12px;
   font-weight: 500;
+  color: black;
 }
 
 .langSwitch {

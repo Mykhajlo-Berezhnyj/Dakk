@@ -9,7 +9,7 @@
   <body x-data="localization()">
     <header>
       <div class="container header">
-        <div class="logo-wrap">
+        <a href="/" class="logo-wrap">
           <img src="/images/logo.webp" aria-label="logo ДАКК" />
           <div class="logo-text">
             <div class="anim-text" x-data="animatedLogo()">
@@ -28,7 +28,7 @@
               <p>Дніпровська архітектурна конструкторська компанія</p>
             </div>
           </div>
-        </div>
+        </a>
         <div
           x-data="{data: new Date().toLocaleTimeString([], {hour12: false})}"
           x-init="setInterval(() => data = new Date().toLocaleTimeString([], {hour12: false}), 1000)"
